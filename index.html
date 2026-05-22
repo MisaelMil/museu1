@@ -14,8 +14,10 @@
       overflow: hidden;
       background: black;
       font-family: Arial, sans-serif;
+      user-select: none;
     }
 
+    /* Título Principal */
     .titulo {
       position: absolute;
       top: 15px;
@@ -27,6 +29,37 @@
       text-shadow: 2px 2px 8px black;
     }
 
+    /* CAIXA DE TEXTO: Nome do Objeto Atual */
+    .ui-nome {
+      position: absolute;
+      top: 70px;
+      width: 100%;
+      text-align: center;
+      color: #ffdd67; /* Cor amarela/dourada para destacar */
+      font-size: 26px;
+      font-weight: bold;
+      z-index: 10;
+      text-shadow: 2px 2px 6px black;
+    }
+
+    /* PAINEL LATERAL: Descrição do Objeto */
+    .ui-painel-descricao {
+      position: absolute;
+      right: 30px;
+      top: 35%;
+      width: 260px;
+      background: rgba(0, 0, 0, 0.75); /* Fundo escuro semi-transparente */
+      color: white;
+      padding: 20px;
+      border-radius: 8px;
+      border: 1px solid #444;
+      font-size: 16px;
+      line-height: 1.5;
+      z-index: 10;
+      box-shadow: 0px 4px 15px rgba(0,0,0,0.5);
+    }
+
+    /* Instrução Inferior */
     .info {
       position: absolute;
       bottom: 15px;
@@ -42,14 +75,18 @@
 
 <body>
 
-<div class="titulo">
-  Mostruário Virtual M.Q.R
+<!-- TEXTOS EM HTML PURO (Acentuação 100% garantida) -->
+<div class="titulo">Mostruário Virtual M.Q.R</div>
+
+<div id="htmlNomeObjeto" class="ui-nome">Estátua</div>
+
+<div id="htmlDescricaoObjeto" class="ui-painel-descricao">
+  Estátua mulher com vaso<br>Bragança - PA
 </div>
 
-<div class="info">
-  Clique na tela para trocar o objeto
-</div>
+<div class="info">Clique na tela para trocar o objeto</div>
 
+<!-- MUNDO 3D (Apenas cenários e objetos, sem textos bugando aqui dentro) -->
 <a-scene background="color: #0d0d0d">
 
   <!-- LUZES -->
@@ -71,35 +108,7 @@
   <a-box position="0 4.95 -3" width="3.1" height="0.12" depth="2.1" color="#444"></a-box>
   <a-box position="0 0.15 -3" width="3.1" height="0.3" depth="2.1" color="#444"></a-box>
 
-  <!-- ================================= -->
-  <!-- TEXTO DO NOME (LINK VIA CDN CORRETO) -->
-  <!-- ================================= -->
-  <a-text
-    id="nomeObjeto"
-    value="Estátua"
-    position="0 5.7 -3"
-    align="center"
-    color="white"
-    width="8"
-    font="https://cdn.jsdelivr.net/gh/etiennepinchon/aframe-fonts@master/fonts/roboto/Roboto-Regular.json"
-    shader="msdf">
-  </a-text>
-
-  <!-- ================================= -->
-  <!-- DESCRIÇÃO (LINK VIA CDN CORRETO) -->
-  <!-- ================================= -->
-  <a-text
-    id="descricaoObjeto"
-    value="Estátua mulher com vaso\nBragança - PA"
-    position="3 3 -3"
-    align="left"
-    color="white"
-    width="4"
-    font="https://cdn.jsdelivr.net/gh/etiennepinchon/aframe-fonts@master/fonts/roboto/Roboto-Regular.json"
-    shader="msdf">
-  </a-text>
-
-  <!-- OBJETOS -->
+  <!-- OBJETOS GLTF -->
   <a-entity id="obj1" gltf-model="etatua.glb" position="0 0.9 -3" scale="1.4 1.4 1.4" visible="true" animation="property: rotation; to: 0 360 0; loop: true; dur: 12000; easing: linear"></a-entity>
   <a-entity id="obj6" gltf-model="vaso1.glb" position="0 1 -3" scale="5 5 5" visible="false" animation="property: rotation; to: 0 360 0; loop: true; dur: 12000; easing: linear"></a-entity>
   <a-entity id="obj2" gltf-model="vaso2.glb" position="0 1 -3" scale="5 5 5" visible="false" animation="property: rotation; to: 0 360 0; loop: true; dur: 12000; easing: linear"></a-entity>
@@ -118,29 +127,36 @@
 
 </a-scene>
 
+<!-- JAVASCRIPT CORRIGIDO PARA ATUALIZAR O HTML -->
 <script>
 const objetos = [
-  { id: "obj1", nome: "Estátua", descricao: "Estátua mulher com vaso\nBragança - PA" },
-  { id: "obj6", nome: "Vaso 1", descricao: "Vaso cerâmico Marajoara\nBragança - PA" },
-  { id: "obj2", nome: "Vaso 2", descricao: "Peça cerimonial indígena\nAbaetetuba - PA" },
-  { id: "obj3", nome: "Vaso 3", descricao: "Arte cerâmica tradicional\nSoure - PA" },
-  { id: "obj4", nome: "Sofá", descricao: "Miniatura de mobiliário\nBelém - PA" },
-  { id: "obj5", nome: "Flor", descricao: "Escultura botânica digital\nCastanhal - PA" },
-  { id: "obj7", nome: "Cavalo", descricao: "Escultura animal artesanal\nMarajó - PA" },
-  { id: "obj8", nome: "Cadeira", descricao: "Objeto doméstico modelado\nBelém - PA" }
+  { id: "obj1", nome: "Estátua", descricao: "Estátua mulher com vaso<br>Bragança - PA" },
+  { id: "obj6", nome: "Vaso 1", descricao: "Vaso cerâmico Marajoara<br>Bragança - PA" },
+  { id: "obj2", nome: "Vaso 2", descricao: "Peça cerimonial indígena<br>Abaetetuba - PA" },
+  { id: "obj3", nome: "Vaso 3", descricao: "Arte cerâmica tradicional<br>Soure - PA" },
+  { id: "obj4", nome: "Sofá", descricao: "Miniatura de mobiliário<br>Belém - PA" },
+  { id: "obj5", nome: "Flor", descricao: "Escultura botânica digital<br>Castanhal - PA" },
+  { id: "obj7", nome: "Cavalo", descricao: "Escultura animal artesanal<br>Marajó - PA" },
+  { id: "obj8", nome: "Cadeira", descricao: "Objeto doméstico modelado<br>Belém - PA" }
 ];
 
 let atual = 0;
 
 function mostrarObjeto(index) {
+  // 1. Esconde todos os objetos 3D
   objetos.forEach(obj => {
     document.getElementById(obj.id).setAttribute("visible", false);
   });
+  
+  // 2. Mostra o objeto 3D atual
   document.getElementById(objetos[index].id).setAttribute("visible", true);
-  document.getElementById("nomeObjeto").setAttribute("value", objetos[index].nome);
-  document.getElementById("descricaoObjeto").setAttribute("value", objetos[index].descricao);
+  
+  // 3. Atualiza os textos usando o HTML nativo (Adeus erros de acento!)
+  document.getElementById("htmlNomeObjeto").innerText = objetos[index].nome;
+  document.getElementById("htmlDescricaoObjeto").innerHTML = objetos[index].descricao;
 }
 
+// Troca ao clicar na tela
 document.addEventListener("click", () => {
   atual++;
   if (atual >= objetos.length) { atual = 0; }
