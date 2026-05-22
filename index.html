@@ -2,17 +2,16 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <title>Museu Virtual Marajoara</title>
+  <title>Galeria 3D Marajoara</title>
 
-  <!-- A-Frame -->
   <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
 
   <style>
     body {
       margin: 0;
       overflow: hidden;
-      font-family: Arial, sans-serif;
       background: black;
+      font-family: Arial;
     }
 
     .titulo {
@@ -21,20 +20,19 @@
       width: 100%;
       text-align: center;
       color: white;
-      font-size: 32px;
+      font-size: 30px;
       z-index: 10;
       text-shadow: 2px 2px 5px black;
     }
 
-    .subtitulo {
+    .info {
       position: absolute;
-      top: 50px;
+      bottom: 10px;
       width: 100%;
       text-align: center;
       color: white;
-      font-size: 16px;
+      font-size: 18px;
       z-index: 10;
-      text-shadow: 2px 2px 5px black;
     }
   </style>
 </head>
@@ -42,172 +40,224 @@
 <body>
 
 <div class="titulo">
-  Museu Virtual Marajoara
+  Galeria Virtual Marajoara
 </div>
 
-<div class="subtitulo">
-  Vasos digitalizados por fotogrametria
+<div class="info">
+  A/D = trocar objeto | Mouse = girar visão
 </div>
 
-<a-scene background="color: #1a1a1a">
+<a-scene background="color: #111">
 
-  <!-- ========================= -->
+  <!-- ===================== -->
   <!-- ILUMINAÇÃO -->
-  <!-- ========================= -->
+  <!-- ===================== -->
 
-  <a-light type="ambient" intensity="1"></a-light>
+  <a-light type="ambient" intensity="1.2"></a-light>
 
   <a-light
     type="directional"
-    position="2 4 2"
-    intensity="1.5">
+    intensity="2"
+    position="2 4 2">
   </a-light>
 
-  <a-light
-    type="point"
-    position="-3 3 0"
-    intensity="1">
-  </a-light>
-
-  <!-- ========================= -->
+  <!-- ===================== -->
   <!-- CHÃO -->
-  <!-- ========================= -->
+  <!-- ===================== -->
 
   <a-plane
     rotation="-90 0 0"
-    width="40"
-    height="40"
-    color="#555">
+    width="30"
+    height="30"
+    color="#444">
   </a-plane>
 
-  <!-- ========================= -->
-  <!-- PAREDES -->
-  <!-- ========================= -->
-
-  <a-box
-    position="0 3 -12"
-    width="25"
-    height="6"
-    depth="0.2"
-    color="#333">
-  </a-box>
-
-  <!-- ========================= -->
+  <!-- ===================== -->
   <!-- VASO 1 -->
-  <!-- ========================= -->
+  <!-- ===================== -->
 
   <a-entity
-    gltf-model="flor.glb"
-    position="-6 0 -6"
-    scale="1 1 1"
-    rotation="0 45 0"
+    id="obj1"
+    gltf-model="vaso1.glb"
+    position="0 0 -3"
+    scale="2 2 2"
+    rotation="0 0 0"
+    visible="true"
     animation="
       property: rotation;
-      to: 0 405 0;
+      to: 0 360 0;
       loop: true;
-      dur: 20000">
+      dur: 15000">
   </a-entity>
 
-  <a-text
-    value="cavalo.glb"
-    position="-6 2 -6"
-    align="center"
-    color="white"
-    width="16">
-  </a-text>
-
-  <!-- ========================= -->
+  <!-- ===================== -->
   <!-- VASO 2 -->
-  <!-- ========================= -->
+  <!-- ===================== -->
 
   <a-entity
-    gltf-model="etatua.glb"
-    position="0 0 -6"
-    scale="1 1 1"
-    rotation="0 45 0"
+    id="obj2"
+    gltf-model="vaso2.glb"
+    position="0 0 -3"
+    scale="2 2 2"
+    visible="false"
     animation="
       property: rotation;
-      to: 0 405 0;
+      to: 0 360 0;
       loop: true;
-      dur: 22000">
+      dur: 15000">
   </a-entity>
 
-  <a-text
-    value="tatua 2"
-    position="0 2 -6"
-    align="center"
-    color="white"
-    width="16">
-  </a-text>
-
-  <!-- ========================= -->
+  <!-- ===================== -->
   <!-- VASO 3 -->
-  <!-- ========================= -->
+  <!-- ===================== -->
 
   <a-entity
+    id="obj3"
     gltf-model="vaso3.glb"
-    position="6 0 -6"
-    scale="1 1 1"
-    rotation="0 45 0"
+    position="0 0 -3"
+    scale="2 2 2"
+    visible="false"
     animation="
       property: rotation;
-      to: 0 405 0;
+      to: 0 360 0;
       loop: true;
-      dur: 24000">
+      dur: 15000">
   </a-entity>
+
+  <!-- ===================== -->
+  <!-- SOFÁ -->
+  <!-- ===================== -->
+
+  <a-entity
+    id="obj4"
+    gltf-model="sofa.glb"
+    position="0 0 -4"
+    scale="2 2 2"
+    visible="false"
+    animation="
+      property: rotation;
+      to: 0 360 0;
+      loop: true;
+      dur: 15000">
+  </a-entity>
+
+  <!-- ===================== -->
+  <!-- FLOR -->
+  <!-- ===================== -->
+
+  <a-entity
+    id="obj5"
+    gltf-model="flor.glb"
+    position="0 0 -3"
+    scale="2 2 2"
+    visible="false"
+    animation="
+      property: rotation;
+      to: 0 360 0;
+      loop: true;
+      dur: 15000">
+  </a-entity>
+
+  <!-- ===================== -->
+  <!-- TEXTO -->
+  <!-- ===================== -->
 
   <a-text
-    value="Vaso 3"
-    position="6 2 -6"
+    id="nomeObjeto"
+    value="Vaso 1"
+    position="0 2.5 -3"
     align="center"
     color="white"
-    width="6">
+    width="8">
   </a-text>
 
-  <!-- ========================= -->
-  <!-- SOFÁ -->
-  <!-- ========================= -->
-
-  <a-entity
-    gltf-model="sofa.glb"
-    position="0 0 2"
-    scale="1.5 1.5 1.5"
-    rotation="0 180 0">
-  </a-entity>
-
-  <!-- ========================= -->
-  <!-- FLORES -->
-  <!-- ========================= -->
-
-  <a-entity
-    gltf-model="flor.glb"
-    position="-2 0 1"
-    scale="0.8 0.8 0.8">
-  </a-entity>
-
-  <a-entity
-    gltf-model="flor.glb"
-    position="2 0 1"
-    scale="0.8 0.8 0.8">
-  </a-entity>
-
-  <!-- ========================= -->
+  <!-- ===================== -->
   <!-- CÂMERA -->
-  <!-- ========================= -->
+  <!-- ===================== -->
 
-  <a-entity position="0 1.6 8">
+  <a-entity position="0 1.6 2">
 
-    <a-camera wasd-controls look-controls>
+    <a-camera look-controls>
 
-      <a-cursor
-        color="white">
-      </a-cursor>
+      <a-cursor color="white"></a-cursor>
 
     </a-camera>
 
   </a-entity>
 
 </a-scene>
+
+<script>
+
+const objetos = [
+  {
+    id: "obj1",
+    nome: "Vaso 1"
+  },
+  {
+    id: "obj2",
+    nome: "Vaso 2"
+  },
+  {
+    id: "obj3",
+    nome: "Vaso 3"
+  },
+  {
+    id: "obj4",
+    nome: "Sofá"
+  },
+  {
+    id: "obj5",
+    nome: "Flor"
+  }
+];
+
+let atual = 0;
+
+function mostrarObjeto(index) {
+
+  objetos.forEach(obj => {
+    document
+      .getElementById(obj.id)
+      .setAttribute("visible", false);
+  });
+
+  document
+    .getElementById(objetos[index].id)
+    .setAttribute("visible", true);
+
+  document
+    .getElementById("nomeObjeto")
+    .setAttribute("value", objetos[index].nome);
+}
+
+document.addEventListener("keydown", (e) => {
+
+  if (e.key === "d" || e.key === "ArrowRight") {
+
+    atual++;
+
+    if (atual >= objetos.length) {
+      atual = 0;
+    }
+
+    mostrarObjeto(atual);
+  }
+
+  if (e.key === "a" || e.key === "ArrowLeft") {
+
+    atual--;
+
+    if (atual < 0) {
+      atual = objetos.length - 1;
+    }
+
+    mostrarObjeto(atual);
+  }
+
+});
+
+</script>
 
 </body>
 </html>
