@@ -188,19 +188,20 @@
   <!-- ================================= -->
 
   <!-- VASO 1 -->
-  <a-entity
-    id="obj1"
-    gltf-model="vaso1.glb"
-    position="0 1 -3"
-    scale="1.5 1.5 1.5"
-    visible="true"
-    animation="
-      property: rotation;
-      to: 0 360 0;
-      loop: true;
-      dur: 12000;
-      easing: linear">
-  </a-entity>
+<!-- ================================= -->
+<!-- TEXTO ALTERADO COM FONTE SUPORTE A ACENTOS -->
+<!-- ================================= -->
+
+<a-text
+  id="nomeObjeto"
+  value="Vaso 1"
+  position="0 6.8 -3"
+  align="center"
+  color="white"
+  width="8"
+  font="https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/roboto/Roboto-Regular.json"
+  shader="msdf">
+</a-text>
 
   <!-- VASO 2 -->
   <a-entity
