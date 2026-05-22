@@ -99,14 +99,14 @@
   </a-cylinder>
 
   <!-- ================================= -->
-  <!-- VITRINE -->
+  <!-- VITRINE MAIS ALTA -->
   <!-- ================================= -->
 
   <!-- Vidro frontal -->
   <a-box
-    position="0 2 -3.95"
+    position="0 3.2 -3.95"
     width="3"
-    height="3.5"
+    height="6"
     depth="0.03"
     opacity="0.15"
     color="#99ccff">
@@ -114,9 +114,9 @@
 
   <!-- Vidro traseiro -->
   <a-box
-    position="0 2 -2.05"
+    position="0 3.2 -2.05"
     width="3"
-    height="3.5"
+    height="6"
     depth="0.03"
     opacity="0.08"
     color="#99ccff">
@@ -124,9 +124,9 @@
 
   <!-- Vidro esquerdo -->
   <a-box
-    position="-1.5 2 -3"
+    position="-1.5 3.2 -3"
     width="0.03"
-    height="3.5"
+    height="6"
     depth="2"
     opacity="0.12"
     color="#99ccff">
@@ -134,9 +134,9 @@
 
   <!-- Vidro direito -->
   <a-box
-    position="1.5 2 -3"
+    position="1.5 3.2 -3"
     width="0.03"
-    height="3.5"
+    height="6"
     depth="2"
     opacity="0.12"
     color="#99ccff">
@@ -144,7 +144,7 @@
 
   <!-- Topo da vitrine -->
   <a-box
-    position="0 3.8 -3"
+    position="0 6.25 -3"
     width="3.1"
     height="0.1"
     depth="2.1"
@@ -167,135 +167,99 @@
   <a-text
     id="nomeObjeto"
     value="Vaso 1"
-    position="0 4.4 -3"
+    position="0 6.8 -3"
     align="center"
     color="white"
     width="8">
   </a-text>
 
   <!-- ================================= -->
-  <!-- OBJETOS -->
+  <!-- GRUPO FIXO -->
   <!-- ================================= -->
 
-  <!-- VASO 1 -->
-  <a-entity
-    id="obj1"
-    gltf-model="vaso1.glb"
-    position="0 1 -3"
-    scale="1.5 1.5 1.5"
-    visible="true"
-    animation="
-      property: rotation;
-      to: 0 360 0;
-      loop: true;
-      dur: 18000">
-  </a-entity>
+  <a-entity id="grupoObjetos">
 
-  <!-- VASO 2 -->
-  <a-entity
-    id="obj2"
-    gltf-model="vaso2.glb"
-    position="0 1 -3"
-    scale="1.5 1.5 1.5"
-    visible="false"
-    animation="
-      property: rotation;
-      to: 0 360 0;
-      loop: true;
-      dur: 18000">
-  </a-entity>
+    <!-- VASO 1 -->
+    <a-entity
+      id="obj1"
+      gltf-model="vaso1.glb"
+      position="0 1 -3"
+      scale="1.5 1.5 1.5"
+      visible="true">
+    </a-entity>
 
-  <!-- VASO 3 -->
-  <a-entity
-    id="obj3"
-    gltf-model="vaso3.glb"
-    position="0 1 -3"
-    scale="1.5 1.5 1.5"
-    visible="false"
-    animation="
-      property: rotation;
-      to: 0 360 0;
-      loop: true;
-      dur: 18000">
-  </a-entity>
+    <!-- VASO 2 -->
+    <a-entity
+      id="obj2"
+      gltf-model="vaso2.glb"
+      position="0 1 -3"
+      scale="1.5 1.5 1.5"
+      visible="false">
+    </a-entity>
 
-  <!-- SOFÁ -->
-  <a-entity
-    id="obj4"
-    gltf-model="sofa.glb"
-    position="0 0.7 -3"
-    scale="1.3 1.3 1.3"
-    visible="false"
-    animation="
-      property: rotation;
-      to: 0 360 0;
-      loop: true;
-      dur: 18000">
-  </a-entity>
+    <!-- VASO 3 -->
+    <a-entity
+      id="obj3"
+      gltf-model="vaso3.glb"
+      position="0 1 -3"
+      scale="1.5 1.5 1.5"
+      visible="false">
+    </a-entity>
 
-  <!-- FLOR -->
-  <a-entity
-    id="obj5"
-    gltf-model="flor.glb"
-    position="0 1 -3"
-    scale="1.5 1.5 1.5"
-    visible="false"
-    animation="
-      property: rotation;
-      to: 0 360 0;
-      loop: true;
-      dur: 18000">
-  </a-entity>
+    <!-- SOFÁ -->
+    <a-entity
+      id="obj4"
+      gltf-model="sofa.glb"
+      position="0 0.7 -3"
+      scale="1.3 1.3 1.3"
+      visible="false">
+    </a-entity>
 
-  <!-- ESTÁTUA -->
-  <a-entity
-    id="obj6"
-    gltf-model="estatua.glb"
-    position="0 0.9 -3"
-    scale="1.4 1.4 1.4"
-    visible="false"
-    animation="
-      property: rotation;
-      to: 0 360 0;
-      loop: true;
-      dur: 18000">
-  </a-entity>
+    <!-- FLOR -->
+    <a-entity
+      id="obj5"
+      gltf-model="flor.glb"
+      position="0 1 -3"
+      scale="1.5 1.5 1.5"
+      visible="false">
+    </a-entity>
 
-  <!-- CAVALO -->
-  <a-entity
-    id="obj7"
-    gltf-model="cavalo.glb"
-    position="0 0.9 -3"
-    scale="1.2 1.2 1.2"
-    visible="false"
-    animation="
-      property: rotation;
-      to: 0 360 0;
-      loop: true;
-      dur: 18000">
-  </a-entity>
+    <!-- ESTÁTUA -->
+    <a-entity
+      id="obj6"
+      gltf-model="etatua.glb"
+      position="0 0.9 -3"
+      scale="1.2 1.2 1.2"
+      visible="false">
+    </a-entity>
 
-  <!-- CADEIRA -->
-  <a-entity
-    id="obj8"
-    gltf-model="cadeira.glb"
-    position="0 0.8 -3"
-    scale="1.5 1.5 1.5"
-    visible="false"
-    animation="
-      property: rotation;
-      to: 0 360 0;
-      loop: true;
-      dur: 18000">
+    <!-- CAVALO -->
+    <a-entity
+      id="obj7"
+      gltf-model="cavalo.glb"
+      position="0 0.9 -3"
+      scale="1.2 1.2 1.2"
+      visible="false">
+    </a-entity>
+
+    <!-- CADEIRA -->
+    <a-entity
+      id="obj8"
+      gltf-model="cadeira.glb"
+      position="0 0.8 -3"
+      scale="1.5 1.5 1.5"
+      visible="false">
+    </a-entity>
+
   </a-entity>
 
   <!-- ================================= -->
-  <!-- CÂMERA -->
+  <!-- CÂMERA FIXA -->
   <!-- ================================= -->
 
   <a-entity position="0 1.8 1.5">
 
-    <a-camera look-controls>
+    <a-camera>
 
       <a-cursor color="white"></a-cursor>
 
@@ -313,45 +277,14 @@
 
 const objetos = [
 
-  {
-    id: "obj1",
-    nome: "Vaso 1"
-  },
-
-  {
-    id: "obj2",
-    nome: "Vaso 2"
-  },
-
-  {
-    id: "obj3",
-    nome: "Vaso 3"
-  },
-
-  {
-    id: "obj4",
-    nome: "Sofá"
-  },
-
-  {
-    id: "obj5",
-    nome: "Flor"
-  },
-
-  {
-    id: "obj6",
-    nome: "Estátua"
-  },
-
-  {
-    id: "obj7",
-    nome: "Cavalo"
-  },
-
-  {
-    id: "obj8",
-    nome: "Cadeira"
-  }
+  { id: "obj1", nome: "Vaso 1" },
+  { id: "obj2", nome: "Vaso 2" },
+  { id: "obj3", nome: "Vaso 3" },
+  { id: "obj4", nome: "Sofá" },
+  { id: "obj5", nome: "Flor" },
+  { id: "obj6", nome: "Estátua" },
+  { id: "obj7", nome: "Cavalo" },
+  { id: "obj8", nome: "Cadeira" }
 
 ];
 
@@ -359,6 +292,7 @@ let atual = 0;
 
 function mostrarObjeto(index) {
 
+  // ESCONDE TODOS
   objetos.forEach(obj => {
 
     document
@@ -367,19 +301,26 @@ function mostrarObjeto(index) {
 
   });
 
+  // MOSTRA O ATUAL
   document
     .getElementById(objetos[index].id)
     .setAttribute("visible", true);
 
+  // MUDA TEXTO
   document
     .getElementById("nomeObjeto")
     .setAttribute("value", objetos[index].nome);
 
 }
 
+
+// =======================================
+// TECLADO
+// =======================================
+
 document.addEventListener("keydown", (e) => {
 
-  // Próximo
+  // PRÓXIMO
   if (e.key === "d" || e.key === "ArrowRight") {
 
     atual++;
@@ -391,7 +332,7 @@ document.addEventListener("keydown", (e) => {
     mostrarObjeto(atual);
   }
 
-  // Anterior
+  // ANTERIOR
   if (e.key === "a" || e.key === "ArrowLeft") {
 
     atual--;
