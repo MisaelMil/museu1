@@ -3,6 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mostruário Virtual M.Q.R.</title>
 
   <!-- A-Frame -->
@@ -17,7 +18,7 @@
       user-select: none;
     }
 
-    /* Título Principal */
+    /* LAYOUT DESKTOP */
     .titulo {
       position: absolute;
       top: 15px;
@@ -29,26 +30,24 @@
       text-shadow: 2px 2px 8px black;
     }
 
-    /* CAIXA DE TEXTO: Nome do Objeto Atual */
     .ui-nome {
       position: absolute;
       top: 70px;
       width: 100%;
       text-align: center;
-      color: #ffdd67; /* Cor amarela/dourada para destacar */
+      color: #ffdd67;
       font-size: 26px;
       font-weight: bold;
       z-index: 10;
       text-shadow: 2px 2px 6px black;
     }
 
-    /* PAINEL LATERAL: Descrição do Objeto */
     .ui-painel-descricao {
       position: absolute;
       right: 30px;
       top: 35%;
       width: 260px;
-      background: rgba(0, 0, 0, 0.75); /* Fundo escuro semi-transparente */
+      background: rgba(0, 0, 0, 0.75);
       color: white;
       padding: 20px;
       border-radius: 8px;
@@ -57,9 +56,9 @@
       line-height: 1.5;
       z-index: 10;
       box-shadow: 0px 4px 15px rgba(0,0,0,0.5);
+      box-sizing: border-box;
     }
 
-    /* Instrução Inferior */
     .info {
       position: absolute;
       bottom: 15px;
@@ -70,23 +69,41 @@
       z-index: 10;
       text-shadow: 2px 2px 8px black;
     }
+
+    /* LAYOUT CELULAR (MODO RETRATO) */
+    @media (max-width: 768px) {
+      .titulo { font-size: 20px; top: 12px; }
+      .ui-nome { font-size: 18px; top: 45px; }
+      .ui-painel-descricao {
+        right: 15px;
+        left: 15px;
+        top: auto;
+        bottom: 50px;
+        width: auto;
+        padding: 12px;
+        font-size: 14px;
+        text-align: center;
+        line-height: 1.4;
+        background: rgba(0, 0, 0, 0.8);
+      }
+      .info { font-size: 13px; bottom: 15px; color: #aaa; }
+    }
   </style>
 </head>
 
 <body>
 
-<!-- TEXTOS EM HTML PURO (Acentuação 100% garantida) -->
+<!-- INTERFACE HTML (Aparece no celular/PC normal) -->
 <div class="titulo">Mostruário Virtual M.Q.R</div>
-
 <div id="htmlNomeObjeto" class="ui-nome">Estátua</div>
 
 <div id="htmlDescricaoObjeto" class="ui-painel-descricao">
   Estátua mulher com vaso<br>Bragança - PA
 </div>
 
-<div class="info">Clique na tela para trocar o objeto</div>
+<div class="info">Toque na tela para trocar o objeto</div>
 
-<!-- MUNDO 3D (Apenas cenários e objetos, sem textos bugando aqui dentro) -->
+<!-- MUNDO 3D -->
 <a-scene background="color: #0d0d0d">
 
   <!-- LUZES -->
@@ -94,10 +111,8 @@
   <a-light type="directional" position="2 5 3" intensity="2"></a-light>
   <a-light type="point" position="0 3 2" intensity="1.5"></a-light>
 
-  <!-- CHÃO -->
+  <!-- CHÃO E PEDESTAL -->
   <a-plane rotation="-90 0 0" width="20" height="20" color="#222"></a-plane>
-
-  <!-- PEDESTAL -->
   <a-cylinder position="0 0.6 -3" radius="1.3" height="0.8" color="#555"></a-cylinder>
 
   <!-- VITRINE -->
@@ -107,6 +122,26 @@
   <a-box position="1.5 2.55 -3" width="0.03" height="4.7" depth="2" opacity="0.12" color="#99ccff"></a-box>
   <a-box position="0 4.95 -3" width="3.1" height="0.12" depth="2.1" color="#444"></a-box>
   <a-box position="0 0.15 -3" width="3.1" height="0.3" depth="2.1" color="#444"></a-box>
+
+  <!-- ================================= -->
+  <!-- BOTÃO INTERATIVO PARA MODO VR      -->
+  <!-- ================================= -->
+  <!-- Posicionado ligeiramente à direita e à frente do usuário (fácil de apontar) -->
+  <a-entity id="grupo-botao-vr" position="0.7 1.2 -1.2" rotation="-10 -20 0">
+    <!-- Base do botão -->
+    <a-box width="0.35" height="0.15" depth="0.1" color="#333"></a-box>
+    <!-- O botão físico que recebe o clique -->
+    <a-cylinder 
+      id="botao-vr" 
+      radius="0.08" 
+      height="0.08" 
+      color="#ffdd67" 
+      rotation="90 0 0" 
+      position="0 0 0.02">
+    </a-cylinder>
+    <!-- Texto indicador (Sem acentos para evitar bugs nativos do VR) -->
+    <a-text value="TROCAR" align="center" position="0 0.15 0" width="1.8" color="white"></a-text>
+  </a-entity>
 
   <!-- OBJETOS GLTF -->
   <a-entity id="obj1" gltf-model="etatua.glb" position="0 0.9 -3" scale="1.4 1.4 1.4" visible="true" animation="property: rotation; to: 0 360 0; loop: true; dur: 12000; easing: linear"></a-entity>
@@ -118,16 +153,20 @@
   <a-entity id="obj7" gltf-model="cavalo.glb" position="0 0.9 -3" scale="1.2 1.2 1.2" visible="false" animation="property: rotation; to: 0 360 0; loop: true; dur: 12000; easing: linear"></a-entity>
   <a-entity id="obj8" gltf-model="cadeira.glb" position="0 0.8 -3" scale="1.5 1.5 1.5" visible="false" animation="property: rotation; to: 0 360 0; loop: true; dur: 12000; easing: linear"></a-entity>
 
-  <!-- CÂMERA -->
+  <!-- CÂMERA COM CURSOR REATIVO -->
   <a-entity position="0 1.8 1.5">
-    <a-camera>
-      <a-cursor color="white"></a-cursor>
+    <a-camera look-controls="magicWindowTrackingEnabled: false">
+      <!-- O cursor agora tem uma pequena animação visual ao clicar -->
+      <a-cursor 
+        color="white" 
+        animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150">
+      </a-cursor>
     </a-camera>
   </a-entity>
 
 </a-scene>
 
-<!-- JAVASCRIPT CORRIGIDO PARA ATUALIZAR O HTML -->
+<!-- JAVASCRIPT -->
 <script>
 const objetos = [
   { id: "obj1", nome: "Estátua", descricao: "Estátua mulher com vaso<br>Bragança - PA" },
@@ -141,26 +180,47 @@ const objetos = [
 ];
 
 let atual = 0;
+const cena = document.querySelector('a-scene');
 
 function mostrarObjeto(index) {
-  // 1. Esconde todos os objetos 3D
   objetos.forEach(obj => {
     document.getElementById(obj.id).setAttribute("visible", false);
   });
   
-  // 2. Mostra o objeto 3D atual
   document.getElementById(objetos[index].id).setAttribute("visible", true);
-  
-  // 3. Atualiza os textos usando o HTML nativo (Adeus erros de acento!)
   document.getElementById("htmlNomeObjeto").innerText = objetos[index].nome;
   document.getElementById("htmlDescricaoObjeto").innerHTML = objetos[index].descricao;
 }
 
-// Troca ao clicar na tela
-document.addEventListener("click", () => {
+function avancarCarrossel() {
   atual++;
   if (atual >= objetos.length) { atual = 0; }
   mostrarObjeto(atual);
+}
+
+// 1. CLIQUE NA TELA: Funciona apenas fora do modo VR (Celular/PC normal)
+document.addEventListener("click", (e) => {
+  // Se os óculos VR estiverem ativos, desativa o clique global para evitar comandos duplicados
+  if (cena.is('vr-mode')) return; 
+  avancarCarrossel();
+});
+
+// 2. INTERAÇÃO DO BOTÃO 3D (Para o modo VR)
+const botaoVR = document.getElementById("botao-vr");
+
+// Quando o cursor mira no botão (Hover efeito)
+botaoVR.addEventListener("mouseenter", () => {
+  botaoVR.setAttribute("color", "#ff4444"); // Fica vermelho indicador
+});
+
+// Quando o cursor sai de cima do botão
+botaoVR.addEventListener("mouseleave", () => {
+  botaoVR.setAttribute("color", "#ffdd67"); // Volta para o amarelo original
+});
+
+// Quando o cursor executa o clique/gatilho no botão
+botaoVR.addEventListener("click", (e) => {
+  avancarCarrossel();
 });
 </script>
 
