@@ -9,7 +9,6 @@
   <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
 
   <style>
-
     body {
       margin: 0;
       overflow: hidden;
@@ -38,7 +37,6 @@
       z-index: 10;
       text-shadow: 2px 2px 8px black;
     }
-
   </style>
 </head>
 
@@ -160,7 +158,7 @@
   </a-box>
 
   <!-- ================================= -->
-  <!-- TEXTO DO NOME -->
+  <!-- TEXTO DO NOME (COM FONTE CORRIGIDA) -->
   <!-- ================================= -->
 
   <a-text
@@ -169,11 +167,13 @@
     position="0 5.7 -3"
     align="center"
     color="white"
-    width="8">
+    width="8"
+    font="https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/roboto/Roboto-Regular.json"
+    shader="msdf">
   </a-text>
 
   <!-- ================================= -->
-  <!-- DESCRIÇÃO -->
+  <!-- DESCRIÇÃO (COM FONTE CORRIGIDA) -->
   <!-- ================================= -->
 
   <a-text
@@ -182,7 +182,9 @@
     position="3 3 -3"
     align="left"
     color="white"
-    width="4">
+    width="4"
+    font="https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/roboto/Roboto-Regular.json"
+    shader="msdf">
   </a-text>
 
   <!-- ================================= -->
@@ -314,11 +316,9 @@
   <!-- ================================= -->
 
   <a-entity position="0 1.8 1.5">
-
     <a-camera>
       <a-cursor color="white"></a-cursor>
     </a-camera>
-
   </a-entity>
 
 </a-scene>
@@ -326,77 +326,61 @@
 <!-- ================================= -->
 <!-- JAVASCRIPT -->
 <!-- ================================= -->
-
 <script>
-
 const objetos = [
-
   {
     id: "obj1",
     nome: "Estátua",
     descricao: "Estátua mulher com vaso\nBragança - PA"
   },
-
   {
     id: "obj6",
     nome: "Vaso 1",
     descricao: "Vaso cerâmico Marajoara\nBragança - PA"
   },
-
   {
     id: "obj2",
     nome: "Vaso 2",
     descricao: "Peça cerimonial indígena\nAbaetetuba - PA"
   },
-
   {
     id: "obj3",
     nome: "Vaso 3",
     descricao: "Arte cerâmica tradicional\nSoure - PA"
   },
-
   {
     id: "obj4",
     nome: "Sofá",
     descricao: "Miniatura de mobiliário\nBelém - PA"
   },
-
   {
     id: "obj5",
     nome: "Flor",
     descricao: "Escultura botânica digital\nCastanhal - PA"
   },
-
   {
     id: "obj7",
     nome: "Cavalo",
     descricao: "Escultura animal artesanal\nMarajó - PA"
   },
-
   {
     id: "obj8",
     nome: "Cadeira",
     descricao: "Objeto doméstico modelado\nBelém - PA"
   }
-
 ];
 
 let atual = 0;
 
-
 // =======================================
 // MOSTRAR OBJETO
 // =======================================
-
 function mostrarObjeto(index) {
-
   // ESCONDE TODOS
   objetos.forEach(obj => {
-
     document
       .getElementById(obj.id)
       .setAttribute("visible", false);
-
   });
 
   // MOSTRA O ATUAL
@@ -413,16 +397,12 @@ function mostrarObjeto(index) {
   document
     .getElementById("descricaoObjeto")
     .setAttribute("value", objetos[index].descricao);
-
 }
-
 
 // =======================================
 // TROCAR OBJETO COM CLICK
 // =======================================
-
 document.addEventListener("click", () => {
-
   atual++;
 
   if (atual >= objetos.length) {
@@ -430,9 +410,7 @@ document.addEventListener("click", () => {
   }
 
   mostrarObjeto(atual);
-
 });
-
 </script>
 
 </body>
