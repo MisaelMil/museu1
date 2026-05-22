@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
   <meta charset="UTF-8">
-  <title>Galeria 3D Marajoara</title>
+  <title>Galeria Virtual 3D</title>
 
+  <!-- A-Frame -->
   <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
 
   <style>
@@ -11,7 +13,7 @@
       margin: 0;
       overflow: hidden;
       background: black;
-      font-family: Arial;
+      font-family: Arial, sans-serif;
     }
 
     .titulo {
@@ -20,9 +22,9 @@
       width: 100%;
       text-align: center;
       color: white;
-      font-size: 30px;
+      font-size: 32px;
       z-index: 10;
-      text-shadow: 2px 2px 5px black;
+      text-shadow: 2px 2px 6px black;
     }
 
     .info {
@@ -33,284 +35,306 @@
       color: white;
       font-size: 18px;
       z-index: 10;
+      text-shadow: 2px 2px 6px black;
     }
   </style>
 </head>
 
 <body>
 
-<div class="titulo">
-  Galeria Virtual Marajoara
-</div>
+  <div class="titulo">
+    Museu Virtual Marajoara
+  </div>
 
-<div class="info">
-  A/D = trocar objeto | Mouse = girar visão
-</div>
+  <div class="info">
+    A / ← = anterior &nbsp;&nbsp;&nbsp; D / → = próximo
+  </div>
 
-<a-scene background="color: #111">
+  <!-- ======================================= -->
+  <!-- CENA -->
+  <!-- ======================================= -->
 
-  <!-- ===================== -->
-  <!-- ILUMINAÇÃO -->
-  <!-- ===================== -->
+  <a-scene background="color: #111">
 
-  <a-light type="ambient" intensity="1.2"></a-light>
+    <!-- ======================================= -->
+    <!-- LUZES -->
+    <!-- ======================================= -->
 
-  <a-light
-    type="directional"
-    intensity="2"
-    position="2 4 2">
-  </a-light>
+    <a-light
+      type="ambient"
+      intensity="1.2">
+    </a-light>
 
-  <!-- ===================== -->
-  <!-- CHÃO -->
-  <!-- ===================== -->
+    <a-light
+      type="directional"
+      position="2 4 2"
+      intensity="2">
+    </a-light>
 
-  <a-plane
-    rotation="-90 0 0"
-    width="30"
-    height="30"
-    color="#444">
-  </a-plane>
+    <a-light
+      type="point"
+      position="-3 3 0"
+      intensity="1">
+    </a-light>
 
-  <!-- ===================== -->
-  <!-- VASO 1 -->
-  <!-- ===================== -->
+    <!-- ======================================= -->
+    <!-- CHÃO -->
+    <!-- ======================================= -->
 
-  <a-entity
-    id="obj1"
-    gltf-model="vaso1.glb"
-    position="0 0 -3"
-    scale="2 2 2"
-    rotation="0 0 0"
-    visible="true"
-    animation="
-      property: rotation;
-      to: 0 360 0;
-      loop: true;
-      dur: 15000">
+    <a-plane
+      rotation="-90 0 0"
+      width="40"
+      height="40"
+      color="#444">
+    </a-plane>
 
-	<a-entity
-  id="obj6"
-  gltf-model="estatua.glb"
-  position="0 0 -3"
-  scale="2 2 2"
-  visible="false"
-  animation="
-    property: rotation;
-    to: 0 360 0;
-    loop: true;
-    dur: 15000">
-</a-entity>
+    <!-- ======================================= -->
+    <!-- TEXTO DO OBJETO -->
+    <!-- ======================================= -->
 
-	<a-entity
-  id="obj8"
-  gltf-model="cadeira.glb"
-  position="0 0 -3"
-  scale="2 2 2"
-  visible="false"
-  animation="
-    property: rotation;
-    to: 0 360 0;
-    loop: true;
-    dur: 15000">
-</a-entity>
-	
-<a-entity
-  id="obj6"
-  gltf-model="estatua.glb"
-  position="0 0 -3"
-  scale="2 2 2"
-  visible="false"
-  animation="
-    property: rotation;
-    to: 0 360 0;
-    loop: true;
-    dur: 15000">
-</a-entity>
+    <a-text
+      id="nomeObjeto"
+      value="Vaso 1"
+      position="0 2.5 -3"
+      align="center"
+      color="white"
+      width="8">
+    </a-text>
 
+    <!-- ======================================= -->
+    <!-- OBJETOS -->
+    <!-- ======================================= -->
 
-  <!-- ===================== -->
-  <!-- VASO 2 -->
-  <!-- ===================== -->
+    <!-- VASO 1 -->
+    <a-entity
+      id="obj1"
+      gltf-model="vaso1.glb"
+      position="0 0 -3"
+      scale="2 2 2"
+      visible="true"
+      animation="
+        property: rotation;
+        to: 0 360 0;
+        loop: true;
+        dur: 15000">
+    </a-entity>
 
-  <a-entity
-    id="obj2"
-    gltf-model="vaso2.glb"
-    position="0 0 -3"
-    scale="2 2 2"
-    visible="false"
-    animation="
-      property: rotation;
-      to: 0 360 0;
-      loop: true;
-      dur: 15000">
-  </a-entity>
+    <!-- VASO 2 -->
+    <a-entity
+      id="obj2"
+      gltf-model="vaso2.glb"
+      position="0 0 -3"
+      scale="2 2 2"
+      visible="false"
+      animation="
+        property: rotation;
+        to: 0 360 0;
+        loop: true;
+        dur: 15000">
+    </a-entity>
 
-  <!-- ===================== -->
-  <!-- VASO 3 -->
-  <!-- ===================== -->
+    <!-- VASO 3 -->
+    <a-entity
+      id="obj3"
+      gltf-model="vaso3.glb"
+      position="0 0 -3"
+      scale="2 2 2"
+      visible="false"
+      animation="
+        property: rotation;
+        to: 0 360 0;
+        loop: true;
+        dur: 15000">
+    </a-entity>
 
-  <a-entity
-    id="obj3"
-    gltf-model="vaso3.glb"
-    position="0 0 -3"
-    scale="2 2 2"
-    visible="false"
-    animation="
-      property: rotation;
-      to: 0 360 0;
-      loop: true;
-      dur: 15000">
-  </a-entity>
+    <!-- SOFÁ -->
+    <a-entity
+      id="obj4"
+      gltf-model="sofa.glb"
+      position="0 0 -4"
+      scale="2 2 2"
+      visible="false"
+      animation="
+        property: rotation;
+        to: 0 360 0;
+        loop: true;
+        dur: 15000">
+    </a-entity>
 
-  <!-- ===================== -->
-  <!-- SOFÁ -->
-  <!-- ===================== -->
+    <!-- FLOR -->
+    <a-entity
+      id="obj5"
+      gltf-model="flor.glb"
+      position="0 0 -3"
+      scale="2 2 2"
+      visible="false"
+      animation="
+        property: rotation;
+        to: 0 360 0;
+        loop: true;
+        dur: 15000">
+    </a-entity>
 
-  <a-entity
-    id="obj4"
-    gltf-model="sofa.glb"
-    position="0 0 -4"
-    scale="2 2 2"
-    visible="false"
-    animation="
-      property: rotation;
-      to: 0 360 0;
-      loop: true;
-      dur: 15000">
-  </a-entity>
+    <!-- ESTÁTUA -->
+    <a-entity
+      id="obj6"
+      gltf-model="estatua.glb"
+      position="0 0 -3"
+      scale="2 2 2"
+      visible="false"
+      animation="
+        property: rotation;
+        to: 0 360 0;
+        loop: true;
+        dur: 15000">
+    </a-entity>
 
-  <!-- ===================== -->
-  <!-- FLOR -->
-  <!-- ===================== -->
+    <!-- CAVALO -->
+    <a-entity
+      id="obj7"
+      gltf-model="cavalo.glb"
+      position="0 0 -3"
+      scale="2 2 2"
+      visible="false"
+      animation="
+        property: rotation;
+        to: 0 360 0;
+        loop: true;
+        dur: 15000">
+    </a-entity>
 
-  <a-entity
-    id="obj5"
-    gltf-model="flor.glb"
-    position="0 0 -3"
-    scale="2 2 2"
-    visible="false"
-    animation="
-      property: rotation;
-      to: 0 360 0;
-      loop: true;
-      dur: 15000">
-  </a-entity>
+    <!-- CADEIRA -->
+    <a-entity
+      id="obj8"
+      gltf-model="cadeira.glb"
+      position="0 0 -3"
+      scale="2 2 2"
+      visible="false"
+      animation="
+        property: rotation;
+        to: 0 360 0;
+        loop: true;
+        dur: 15000">
+    </a-entity>
 
-  <!-- ===================== -->
-  <!-- TEXTO -->
-  <!-- ===================== -->
+    <!-- ======================================= -->
+    <!-- CÂMERA -->
+    <!-- ======================================= -->
 
-  <a-text
-    id="nomeObjeto"
-    value="Vaso 1"
-    position="0 2.5 -3"
-    align="center"
-    color="white"
-    width="8">
-  </a-text>
+    <a-entity position="0 1.6 2">
 
-  <!-- ===================== -->
-  <!-- CÂMERA -->
-  <!-- ===================== -->
+      <a-camera look-controls>
 
-  <a-entity position="0 1.6 2">
+        <a-cursor color="white"></a-cursor>
 
-    <a-camera look-controls>
+      </a-camera>
 
-      <a-cursor color="white"></a-cursor>
+    </a-entity>
 
-    </a-camera>
+  </a-scene>
 
-  </a-entity>
+  <!-- ======================================= -->
+  <!-- JAVASCRIPT -->
+  <!-- ======================================= -->
 
-</a-scene>
+  <script>
 
-<script>
+    const objetos = [
 
-const objetos = [
+      {
+        id: "obj1",
+        nome: "Vaso 1"
+      },
 
+      {
+        id: "obj2",
+        nome: "Vaso 2"
+      },
 
-{
-  id: "obj6",
-  nome: "Estátua"
-},
-{
-  id: "obj7",
-  nome: "Cavalo"
-},
-{
-  id: "obj8",
-  nome: "Cadeira"
-}
-  {
-    id: "obj1",
-    nome: "Vaso 1"
-  },
-  {
-    id: "obj2",
-    nome: "Vaso 2"
-  },
-  {
-    id: "obj3",
-    nome: "Vaso 3"
-  },
-  {
-    id: "obj4",
-    nome: "Sofá"
-  },
-  {
-    id: "obj5",
-    nome: "Flor"
-  }
-];
+      {
+        id: "obj3",
+        nome: "Vaso 3"
+      },
 
-let atual = 0;
+      {
+        id: "obj4",
+        nome: "Sofá"
+      },
 
-function mostrarObjeto(index) {
+      {
+        id: "obj5",
+        nome: "Flor"
+      },
 
-  objetos.forEach(obj => {
-    document
-      .getElementById(obj.id)
-      .setAttribute("visible", false);
-  });
+      {
+        id: "obj6",
+        nome: "Estátua"
+      },
 
-  document
-    .getElementById(objetos[index].id)
-    .setAttribute("visible", true);
+      {
+        id: "obj7",
+        nome: "Cavalo"
+      },
 
-  document
-    .getElementById("nomeObjeto")
-    .setAttribute("value", objetos[index].nome);
-}
+      {
+        id: "obj8",
+        nome: "Cadeira"
+      }
 
-document.addEventListener("keydown", (e) => {
+    ];
 
-  if (e.key === "d" || e.key === "ArrowRight") {
+    let atual = 0;
 
-    atual++;
+    function mostrarObjeto(index) {
 
-    if (atual >= objetos.length) {
-      atual = 0;
+      objetos.forEach(obj => {
+
+        document
+          .getElementById(obj.id)
+          .setAttribute("visible", false);
+
+      });
+
+      document
+        .getElementById(objetos[index].id)
+        .setAttribute("visible", true);
+
+      document
+        .getElementById("nomeObjeto")
+        .setAttribute("value", objetos[index].nome);
+
     }
 
-    mostrarObjeto(atual);
-  }
+    document.addEventListener("keydown", (e) => {
 
-  if (e.key === "a" || e.key === "ArrowLeft") {
+      // Próximo
+      if (e.key === "d" || e.key === "ArrowRight") {
 
-    atual--;
+        atual++;
 
-    if (atual < 0) {
-      atual = objetos.length - 1;
-    }
+        if (atual >= objetos.length) {
+          atual = 0;
+        }
 
-    mostrarObjeto(atual);
-  }
+        mostrarObjeto(atual);
+      }
 
-});
+      // Anterior
+      if (e.key === "a" || e.key === "ArrowLeft") {
 
-</script>
+        atual--;
+
+        if (atual < 0) {
+          atual = objetos.length - 1;
+        }
+
+        mostrarObjeto(atual);
+      }
+
+    });
+
+  </script>
 
 </body>
+
 </html>
