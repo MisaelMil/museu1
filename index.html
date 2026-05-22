@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Museu Virtual Marajoara</title>
+
+  <!-- A-Frame -->
+  <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+      background: black;
+    }
+
+    .titulo {
+      position: absolute;
+      top: 10px;
+      width: 100%;
+      text-align: center;
+      color: white;
+      font-size: 32px;
+      z-index: 10;
+      text-shadow: 2px 2px 5px black;
+    }
+
+    .subtitulo {
+      position: absolute;
+      top: 50px;
+      width: 100%;
+      text-align: center;
+      color: white;
+      font-size: 16px;
+      z-index: 10;
+      text-shadow: 2px 2px 5px black;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="titulo">
+  Museu Virtual Marajoara
+</div>
+
+<div class="subtitulo">
+  Vasos digitalizados por fotogrametria
+</div>
+
+<a-scene background="color: #1a1a1a">
+
+  <!-- ========================= -->
+  <!-- ILUMINAÇÃO -->
+  <!-- ========================= -->
+
+  <a-light type="ambient" intensity="1"></a-light>
+
+  <a-light
+    type="directional"
+    position="2 4 2"
+    intensity="1.5">
+  </a-light>
+
+  <a-light
+    type="point"
+    position="-3 3 0"
+    intensity="1">
+  </a-light>
+
+  <!-- ========================= -->
+  <!-- CHÃO -->
+  <!-- ========================= -->
+
+  <a-plane
+    rotation="-90 0 0"
+    width="40"
+    height="40"
+    color="#555">
+  </a-plane>
+
+  <!-- ========================= -->
+  <!-- PAREDES -->
+  <!-- ========================= -->
+
+  <a-box
+    position="0 3 -12"
+    width="25"
+    height="6"
+    depth="0.2"
+    color="#333">
+  </a-box>
+
+  <!-- ========================= -->
+  <!-- VASO 1 -->
+  <!-- ========================= -->
+
+  <a-entity
+    gltf-model="vaso1.glb"
+    position="-6 0 -6"
+    scale="1 1 1"
+    rotation="0 45 0"
+    animation="
+      property: rotation;
+      to: 0 405 0;
+      loop: true;
+      dur: 20000">
+  </a-entity>
+
+  <a-text
+    value="Vaso 1"
+    position="-6 2 -6"
+    align="center"
+    color="white"
+    width="6">
+  </a-text>
+
+  <!-- ========================= -->
+  <!-- VASO 2 -->
+  <!-- ========================= -->
+
+  <a-entity
+    gltf-model="vaso2.glb"
+    position="0 0 -6"
+    scale="1 1 1"
+    rotation="0 45 0"
+    animation="
+      property: rotation;
+      to: 0 405 0;
+      loop: true;
+      dur: 22000">
+  </a-entity>
+
+  <a-text
+    value="Vaso 2"
+    position="0 2 -6"
+    align="center"
+    color="white"
+    width="6">
+  </a-text>
+
+  <!-- ========================= -->
+  <!-- VASO 3 -->
+  <!-- ========================= -->
+
+  <a-entity
+    gltf-model="vaso3.glb"
+    position="6 0 -6"
+    scale="1 1 1"
+    rotation="0 45 0"
+    animation="
+      property: rotation;
+      to: 0 405 0;
+      loop: true;
+      dur: 24000">
+  </a-entity>
+
+  <a-text
+    value="Vaso 3"
+    position="6 2 -6"
+    align="center"
+    color="white"
+    width="6">
+  </a-text>
+
+  <!-- ========================= -->
+  <!-- SOFÁ -->
+  <!-- ========================= -->
+
+  <a-entity
+    gltf-model="sofa.glb"
+    position="0 0 2"
+    scale="1.5 1.5 1.5"
+    rotation="0 180 0">
+  </a-entity>
+
+  <!-- ========================= -->
+  <!-- FLORES -->
+  <!-- ========================= -->
+
+  <a-entity
+    gltf-model="flor.glb"
+    position="-2 0 1"
+    scale="0.8 0.8 0.8">
+  </a-entity>
+
+  <a-entity
+    gltf-model="flor.glb"
+    position="2 0 1"
+    scale="0.8 0.8 0.8">
+  </a-entity>
+
+  <!-- ========================= -->
+  <!-- CÂMERA -->
+  <!-- ========================= -->
+
+  <a-entity position="0 1.6 8">
+
+    <a-camera wasd-controls look-controls>
+
+      <a-cursor
+        color="white">
+      </a-cursor>
+
+    </a-camera>
+
+  </a-entity>
+
+</a-scene>
+
+</body>
+</html>
