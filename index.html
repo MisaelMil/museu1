@@ -58,7 +58,7 @@
 
   <a-light
     type="ambient"
-    intensity="0.8">
+    intensity="0.7">
   </a-light>
 
   <a-light
@@ -186,7 +186,20 @@
   <!-- ================================= -->
   <!-- OBJETOS -->
   <!-- ================================= -->
-
+ <!-- ESTÁTUA -->
+  <a-entity
+    id="obj6"
+    gltf-model="etatua.glb"
+    position="0 0.9 -3"
+    scale="1.4 1.4 1.4"
+    visible="false"
+    animation="
+      property: rotation;
+      to: 0 360 0;
+      loop: true;
+      dur: 12000;
+      easing: linear">
+  </a-entity>
   <!-- VASO 1 -->
   <a-entity
     id="obj1"
@@ -262,20 +275,6 @@
       easing: linear">
   </a-entity>
 
-  <!-- ESTÁTUA -->
-  <a-entity
-    id="obj6"
-    gltf-model="etatua.glb"
-    position="0 0.9 -3"
-    scale="1.4 1.4 1.4"
-    visible="false"
-    animation="
-      property: rotation;
-      to: 0 360 0;
-      loop: true;
-      dur: 12000;
-      easing: linear">
-  </a-entity>
 
   <!-- CAVALO -->
   <a-entity
@@ -329,10 +328,14 @@
 
 <script>
 
-const objetos = [
+const objetos = [   {
+    id: "obj1",
+    nome: "Estátua",
+    descricao: "Estátua mulher com vaso\nBragança - PA"
+  },
 
   {
-    id: "obj1",
+    id: "obj6",
     nome: "Vaso 1",
     descricao: "Vaso cerâmico Marajoara\nBragança - PA"
   },
@@ -361,11 +364,6 @@ const objetos = [
     descricao: "Escultura botânica digital\nCastanhal - PA"
   },
 
-  {
-    id: "obj6",
-    nome: "Estátua",
-    descricao: "Estátua mulher com vaso\nBragança - PA"
-  },
 
   {
     id: "obj7",
